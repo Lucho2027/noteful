@@ -6,6 +6,7 @@ class Note extends Component {
       <div className="folder">
         <h1>{this.props.name}</h1>
         <p>{this.props.content}</p>
+        <button>Delete Note</button>
       </div>
     );
   }
