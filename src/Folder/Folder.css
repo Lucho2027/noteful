@@ -1,0 +1,27 @@
+.folder {
+  display: flex;
+
+  justify-content: center;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.folder-button {
+  border: 0;
+  background: none;
+  width: 100%;
+  font-size: 24px;
+}
+
+.folder-button:hover {
+  border: 0;
+  background: black;
+  color: whitesmoke;
+  font-size: 24px;
+}
+.folder-button::selected {
+  border: 0;
+  background: blue;
+  color: whitesmoke;
+  font-size: 24px;
+}

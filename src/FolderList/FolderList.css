@@ -1,0 +1,4 @@
+.folders {
+  display: flex;
+  flex-direction: column;
+}

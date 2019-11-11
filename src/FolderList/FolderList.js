@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Folder from "../Folder/Folder";
+import "./FolderList.css";
 
 class FolderList extends Component {
   render() {
     return (
       <div className="folders">
-        {this.props.folders.folders.map((name, id) => (
+        {this.props.store.folders.map((name, id) => (
           <Folder key={id} {...name} />
         ))}
 
