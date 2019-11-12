@@ -6,7 +6,8 @@ class Note extends Component {
     return (
       <div className="Note">
         <Link to={"/note/" + this.props.id} className="note-button">
-          {this.props.name}
+          <h1>{this.props.name}</h1>
+          <p>{this.props.content}</p>
 
           <p>Modified on {this.props.modified}</p>
           <button>Delete Note</button>

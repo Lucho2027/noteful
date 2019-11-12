@@ -1,20 +1,22 @@
 import React, { Component } from "react";
+import Note from "../Note/Note";
 
 class NotePage extends Component {
   render() {
     let note = this.props.store.notes;
     console.log(note);
-    if (note) {
-      note = this.props.store.notes.find(
-        item => item.notesId === this.props.notesId
+    if (this.props.noteId) {
+      note = this.props.store.notes.filter(
+        item => item.id === this.props.noteId
       );
-      console.log(note);
     }
+    console.log(note);
 
     return (
-      <div className="note-selected">
-        <h1>{note.name}</h1>
-        <p>{note.content}</p>
+      <div className="note-page">
+        {note.map((name, id) => (
+          <Note key={id} {...name} />
+        ))}
       </div>
     );
   }

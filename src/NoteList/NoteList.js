@@ -10,6 +10,7 @@ class NoteList extends Component {
         item => item.folderId === this.props.folderId
       );
     }
+
     return (
       <div className="notes">
         {notes.map((name, id) => (
