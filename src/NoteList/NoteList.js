@@ -13,8 +13,13 @@ class NoteList extends Component {
 
     return (
       <div className="notes">
-        {notes.map((name, id) => (
-          <Note key={id} {...name} />
+        {notes.map((note, id) => (
+          <Note
+            key={id}
+            name={note.name}
+            id={note.id}
+            modified={note.modified}
+          />
         ))}
       </div>
     );
