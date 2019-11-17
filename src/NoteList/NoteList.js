@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import NotefulContext from '../NotefulContext';
+
 import Note from "../Note/Note";
 
 class NoteList extends Component {
+  static contextType = NotefulContext;
   render() {
-    let notes = this.props.store.notes;
+    let notes = this.context.notes;
 
-    if (this.props.folderId) {
-      notes = this.props.store.notes.filter(
-        item => item.folderId === this.props.folderId
+    if (this.context.folderId) {
+      notes = this.context.notes.filter(
+        item => item.folderId === this.context.folderId
       );
     }
 

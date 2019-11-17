@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class AddFolder extends Component {
   onSubmit(e) {
     e.preventDefault();
@@ -9,11 +10,13 @@ class AddFolder extends Component {
   render() {
     return (
       <div className="add-folders">
+        
         <form onSubmit={this.onSubmit}>
-          <label>Folder Name</label>
+          <label>Folder Name: </label>
           <input name="name" type="text"></input>
+          <button type='submit' >Add Folder</button>
         </form>
-        <button>Add Folder</button>
+        
       </div>
     );
   }

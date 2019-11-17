@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import NotePage from "./NotePage/NotePage";
@@ -44,10 +45,14 @@ class App extends Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      addNote: () => {},
-      deleteNote: () => {},
-      addFolder: () => {},
-      deleteFolder: () => {}
+      /* addNote: () => {},
+  deleteNote: () => {},
+  addFolder: () => {},
+  deleteFolder: () => {} */
+      addNote: this.addNote,
+      deleteNote: this.deleteNote,
+      addFolder: this.addFolder,
+      deleteFolder: this.deleteFolder,
     };
     return (
       <div className="App">
@@ -60,32 +65,38 @@ class App extends Component {
           <aside>
             <Route
               path="/"
-              render={props => (
+              component={FolderList}
+            /* render={props => (
                 <FolderList
                   store={this.props.store}
                   folderId={props.match.params.id}
+                  addFolder={this.addFolder}
                 />
-              )}
+              )} */
             />
           </aside>
           <main>
             <Route
               exact
               path="/"
-              render={props => <NoteList store={this.props.store} />}
+              component={NoteList}
+              /* render={props => <NoteList store={this.props.store} />} */
             />
             <Route
               path="/folder/:id"
+              /* component={NoteList} */
               render={props => (
                 <NoteList
                   store={this.props.store}
                   folderId={props.match.params.id}
+                  addFolder={this.addFolder}
                 />
               )}
             />
             <Route
               exact
               path="/note/:id"
+              /* component={NotePage} */
               render={props => (
                 <NotePage
                   store={this.props.store}
