@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 import Note from "../Note/Note";
+import AddNote from "../AddNote/AddNote";
+import NotefulContext from "../NotefulContext";
 
 class NotePage extends Component {
+  static contextType = NotefulContext;
   render() {
-    let note = this.props.store.notes;
-    console.log(note);
-    if (this.props.noteId) {
-      note = this.props.store.notes.filter(
-        item => item.id === this.props.noteId
+    let note = this.context.notes;
+
+    /* if (this.context.id) {
+      note = this.context.notes.filter(
+        item => item.id === this.context.note.id
       );
     }
-    console.log(note);
-
+ */
     return (
       <div className="note-page">
         {note.map((name, id) => (
           <Note key={id} {...name} />
         ))}
+        <AddNote folderId={this.props.folderId} />
       </div>
     );
   }

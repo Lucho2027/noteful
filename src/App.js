@@ -41,7 +41,6 @@ class App extends Component {
   };
 
   setFolders = folders => {
-    console.log(folders);
     this.setState({
       folders: folders
     });
@@ -57,10 +56,6 @@ class App extends Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      /* addNote: () => {},
-  deleteNote: () => {},
-  addFolder: () => {},
-  deleteFolder: () => {} */
       addNote: this.addNote,
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
@@ -77,48 +72,12 @@ class App extends Component {
         </header>
         <NotefulContext.Provider value={contextValue}>
           <aside>
-            <Route
-              path="/"
-              component={FolderList}
-              /* render={props => (
-                <FolderList
-                  store={this.props.store}
-                  folderId={props.match.params.id}
-                  addFolder={this.addFolder}
-                />
-              )} */
-            />
+            <Route path="/" component={FolderList} />
           </aside>
           <main>
-            <Route
-              exact
-              path="/"
-              component={NoteList}
-              /* render={props => <NoteList store={this.props.store} />} */
-            />
-            <Route
-              path="/folder/:id"
-              /* component={NoteList} */
-              render={props => (
-                <NoteList
-                if
-                  store={this.props.store}
-                  folderId={props.match.params.id}
-                  addFolder={this.addFolder}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/note/:id"
-              /* component={NotePage} */
-              render={props => (
-                <NotePage
-                  store={this.props.store}
-                  noteId={props.match.params.id}
-                />
-              )}
-            />
+            <Route exact path="/" component={NoteList} />
+            <Route path="/folder/:id" component={NoteList} />
+            <Route exact path="/note/:id" component={NotePage} />
           </main>
         </NotefulContext.Provider>
       </div>

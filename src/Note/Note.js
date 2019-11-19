@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import NotefulContext from "../NotefulContext";
 
 class Note extends Component {
+  static contextType = NotefulContext;
+  onClick(noteId) {
+    fetch(`http://localhost:9090/notes/${noteId}`, {
+      method: "Delete"
+    })
+      .then(res => res.json())
+      .then(res => this.context.deleteNote(noteId));
+  }
 
-  
   render() {
     return (
       <div className="Note">
@@ -12,7 +20,9 @@ class Note extends Component {
           <p>{this.props.content}</p>
 
           <p>Modified on {this.props.modified}</p>
-          <button>Delete Note</button>
+          <button onClick={e => this.onClick(this.props.id)}>
+            Delete Note
+          </button>
         </Link>
       </div>
     );

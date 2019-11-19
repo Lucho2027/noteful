@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
-
+import AddFolder from "../AddFolder/AddFolder";
 import Note from "../Note/Note";
-import AddNote from "../AddNote/AddNote";
 
 class NoteList extends Component {
   static contextType = NotefulContext;
@@ -14,13 +13,14 @@ class NoteList extends Component {
 
   render() {
     let notes = this.context.notes;
+    console.log(notes);
 
-    if (this.context.folderId) {
-      notes = this.context.notes.filter(
-        item => item.folderId === this.context.folderId
+    /* if (notes.id) {
+      notes = this.context.notes.id.map(
+        item => item.folder.id === this.context.folderId
       );
-    }
-
+      
+    } */
     return (
       <div className="notes">
         {notes.map((note, id) => (
@@ -31,7 +31,8 @@ class NoteList extends Component {
             modified={note.modified}
           />
         ))}
-        <AddNote folderId={this.props.folderId} />
+
+        <AddFolder />
       </div>
     );
   }
