@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import NotePage from "./NotePage/NotePage";
@@ -41,6 +40,19 @@ class App extends Component {
     });
   };
 
+  setFolders = folders => {
+    console.log(folders);
+    this.setState({
+      folders: folders
+    });
+  };
+
+  setNotes = notes => {
+    this.setState({
+      notes: notes
+    });
+  };
+
   render() {
     const contextValue = {
       folders: this.state.folders,
@@ -53,6 +65,8 @@ class App extends Component {
       deleteNote: this.deleteNote,
       addFolder: this.addFolder,
       deleteFolder: this.deleteFolder,
+      setFolders: this.setFolders,
+      setNotes: this.setNotes
     };
     return (
       <div className="App">
@@ -66,7 +80,7 @@ class App extends Component {
             <Route
               path="/"
               component={FolderList}
-            /* render={props => (
+              /* render={props => (
                 <FolderList
                   store={this.props.store}
                   folderId={props.match.params.id}
@@ -87,6 +101,7 @@ class App extends Component {
               /* component={NoteList} */
               render={props => (
                 <NoteList
+                if
                   store={this.props.store}
                   folderId={props.match.params.id}
                   addFolder={this.addFolder}
