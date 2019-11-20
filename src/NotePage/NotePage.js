@@ -8,12 +8,10 @@ class NotePage extends Component {
   render() {
     let note = this.context.notes;
 
-    /* if (this.context.id) {
-      note = this.context.notes.filter(
-        item => item.id === this.context.note.id
-      );
-    }
- */
+    note = this.context.notes.filter(
+      item => item.id === this.props.match.params.id
+    );
+
     return (
       <div className="note-page">
         {note.map((name, id) => (

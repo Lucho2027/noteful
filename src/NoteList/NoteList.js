@@ -13,14 +13,11 @@ class NoteList extends Component {
 
   render() {
     let notes = this.context.notes;
-    console.log(notes);
 
-    /* if (notes.id) {
-      notes = this.context.notes.id.map(
-        item => item.folder.id === this.context.folderId
-      );
-      
-    } */
+    notes = this.context.notes.filter(
+      item => item.folderId === this.props.match.params.id
+    );
+
     return (
       <div className="notes">
         {notes.map((note, id) => (
