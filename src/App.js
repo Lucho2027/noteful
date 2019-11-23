@@ -3,6 +3,9 @@ import { Route, Link } from "react-router-dom";
 import NotePage from "./NotePage/NotePage";
 import FolderList from "./FolderList/FolderList";
 import NoteList from "./NoteList/NoteList";
+import AddFolder from "./AddFolder/AddFolder";
+import NoteListFiltered from "./NoteListFiltered/NoteListFiltered";
+import Nav from "./Nav/Nav";
 import "./App.css";
 import NotefulContext from "./NotefulContext";
 
@@ -70,14 +73,17 @@ class App extends Component {
             <h1>Noteful</h1>
           </Link>
         </header>
+        <Nav />
         <NotefulContext.Provider value={contextValue}>
           <aside>
-            <Route path="/" component={FolderList} />
+            <Route exact path="/" component={FolderList} />
           </aside>
+
           <main>
             <Route exact path="/" component={NoteList} />
-            <Route path="/folder/:id" component={NoteList} />
-            <Route exact path="/note/:id" component={NotePage} />
+            <Route path="/folder/:id" component={NoteListFiltered} />
+            <Route path="/note/:id" component={NotePage} />
+            <Route exact path="/addfolder" component={AddFolder} />
           </main>
         </NotefulContext.Provider>
       </div>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
+import FolderList from "../FolderList/FolderList";
 
 import Note from "../Note/Note";
 
-class NoteList extends Component {
+class NoteListFiltered extends Component {
   static contextType = NotefulContext;
   componentDidMount() {
     fetch("http://localhost:9090/notes")
@@ -14,8 +15,13 @@ class NoteList extends Component {
   render() {
     let notes = this.context.notes;
 
+    notes = this.context.notes.filter(
+      item => item.folderId === this.props.match.params.id
+    );
+
     return (
       <div className="notes">
+        <FolderList />
         {notes.map((note, id) => (
           <Note
             key={id}
@@ -29,4 +35,4 @@ class NoteList extends Component {
   }
 }
 
-export default NoteList;
+export default NoteListFiltered;

@@ -1,24 +1,25 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    font: calc(100% * 0.625) / 1.15 HelveticaNeue, Helvetica, sans-serif;
-  }
-  
-  body {
-    font-size: 1.8rem;
-    line-height: 1.875;
-    color: #252525;
-    margin: 0;
-  }
-  
-  header {
-    background-color: black;
-    color: whitesmoke;
-    padding: 2rem;
-      
-  }
-  header>h1{
-    text-decoration: inherit;
-  }
+  box-sizing: border-box;
+}
+
+html {
+  font: calc(100% * 0.625) / 1.15 HelveticaNeue, Helvetica, sans-serif;
+}
+
+body {
+  font-size: 1.8rem;
+  line-height: 1.875;
+  color: #252525;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: whitesmoke;
+  padding: 2rem;
+}
+header > h1 {
+  text-decoration: inherit;
+}

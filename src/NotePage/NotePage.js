@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Note from "../Note/Note";
 import AddNote from "../AddNote/AddNote";
+import FolderList from "../FolderList/FolderList";
 import NotefulContext from "../NotefulContext";
 
 class NotePage extends Component {
@@ -14,10 +15,11 @@ class NotePage extends Component {
 
     return (
       <div className="note-page">
+        <FolderList />
+        <AddNote folderId={this.props.folderId} />
         {note.map((name, id) => (
           <Note key={id} {...name} />
         ))}
-        <AddNote folderId={this.props.folderId} />
       </div>
     );
   }

@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
+import FolderList from "../FolderList/FolderList";
 
 class AddFolder extends Component {
   static contextType = NotefulContext;
-  /* componentDidMount() {
-    
-      
-      .then(folders => this.context.setFolders(folders));
-  } */
+
+  constructor(props) {
+    super(props);
+    this.nameInput = React.createRef();
+  }
+
   onSubmit(e) {
     e.preventDefault();
+    const name = this.nameInput.current.value;
+    console.log("Name: ", name);
 
     fetch("http://localhost:9090/folders", {
       method: "POST",
@@ -29,9 +33,17 @@ class AddFolder extends Component {
       <div className="add-folders">
         <form onSubmit={e => this.onSubmit(e)}>
           <label>Folder Name: </label>
-          <input name="name" type="text"></input>
-          <button type="submit">Add Folder</button>
+          <input
+            className="folder_name"
+            name="name"
+            type="text"
+            ref={this.nameInput}
+            defaultValue="Enter Folder Name"
+          ></input>
+
+          <button type="submit">Create</button>
         </form>
+        <FolderList />
       </div>
     );
   }
