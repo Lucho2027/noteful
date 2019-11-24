@@ -21,7 +21,7 @@ class NoteListFiltered extends Component {
 
     return (
       <div className="notes">
-        <FolderList />
+        <FolderList id={this.context.id}/>
         {notes.map((note, id) => (
           <Note
             key={id}

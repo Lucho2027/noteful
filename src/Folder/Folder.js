@@ -11,7 +11,8 @@ class Folder extends Component {
       method: "Delete"
     })
       .then(res => res.json())
-      .then(res => this.context.deleteFolder(folderId));
+      .then(res => this.context.deleteFolder(folderId))
+      
   }
 
   render() {

@@ -7,7 +7,7 @@ class AddNote extends Component {
     console.log(e);
     e.preventDefault();
 
-    fetch(`http://localhost:9090/${this.props.folderId}/note`, {
+    fetch(`http://localhost:9090/notes/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/JSON"
@@ -17,8 +17,15 @@ class AddNote extends Component {
         folder_id: this.props.folderId
       })
     })
-      .then(res => res.json())
-      .then(res => this.context.addNote(res));
+    .then(res => {
+      if(res.ok){
+        return res.json();
+      }
+      throw new Error(res.message);
+    })
+    .then(res => this.context.AddNote(res))
+    .catch(err => (console.log(err)));
+     
   }
   render() {
     return (

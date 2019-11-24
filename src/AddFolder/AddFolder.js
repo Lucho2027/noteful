@@ -17,7 +17,7 @@ class AddFolder extends Component {
   }
   updateName(name) {
     this.setState({ name: { value: name, touched: true } });
-    console.log(this.state);
+    
   }
   validateName(fieldValue) {
     const name = this.state.name.value.trim();
@@ -30,8 +30,8 @@ class AddFolder extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    const name = this.state;
-    console.log("Name:", name.name.value);
+    
+    
 
     fetch("http://localhost:9090/folders", {
       method: "POST",
@@ -42,8 +42,14 @@ class AddFolder extends Component {
         name: e.target.name.value
       })
     })
-      .then(res => res.json())
-      .then(res => this.context.addFolder(res));
+      .then(res => {
+        if(res.ok){
+          return res.json();
+        }
+        throw new Error(res.message);
+      })
+      .then(res => this.context.addFolder(res))
+      .catch(err => (console.log(err)));
   }
 
   render() {
