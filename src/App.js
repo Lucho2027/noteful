@@ -9,6 +9,7 @@ import Nav from "./Nav/Nav";
 import NotefulErrorBoundry from"./NotefulErrorBoundry";
 import "./App.css";
 import NotefulContext from "./NotefulContext";
+import AddNote from "./AddNote/AddNote";
 
 class App extends Component {
   state = {
@@ -76,19 +77,32 @@ class App extends Component {
         </header>
         <Nav />
         <NotefulContext.Provider value={contextValue}>
-          <NotefulErrorBoundry>
+          
           <aside>
+            <NotefulErrorBoundry>
             <Route exact path="/" component={FolderList} />
+            </NotefulErrorBoundry>
           </aside>
          
 
           <main>
+          <NotefulErrorBoundry>
             <Route exact path="/" component={NoteList} />
+            </NotefulErrorBoundry>
+            <NotefulErrorBoundry>
             <Route path="/folder/:id" component={NoteListFiltered} />
-            <Route path="/note/:id" component={NotePage} />
+            </NotefulErrorBoundry>
+            <NotefulErrorBoundry>
+            <Route  path="/note/:id" component={NotePage} />
+            </NotefulErrorBoundry>
+            <NotefulErrorBoundry>
+            <Route  exact path="/addnote" component={AddNote}/>
+            </NotefulErrorBoundry>
+            <NotefulErrorBoundry>
             <Route exact path="/addfolder" component={AddFolder} />
+            </NotefulErrorBoundry>
           </main>
-          </NotefulErrorBoundry>
+          
         </NotefulContext.Provider>
       </div>
     );

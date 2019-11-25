@@ -13,6 +13,7 @@ class Note extends Component {
   }
 
   render() {
+    
     return (
       <div className="Note">
         <Link to={"/note/" + this.props.id} className="note-button">

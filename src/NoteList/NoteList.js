@@ -15,6 +15,7 @@ class NoteList extends Component {
     let notes = this.context.notes;
 
     return (
+    
       <div className="notes">
         {notes.map((note, id) => (
           <Note
@@ -22,6 +23,7 @@ class NoteList extends Component {
             name={note.name}
             id={note.id}
             modified={note.modified}
+            
           />
         ))}
       </div>

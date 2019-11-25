@@ -30,9 +30,6 @@ class AddFolder extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    
-    
-
     fetch("http://localhost:9090/folders", {
       method: "POST",
       headers: {
@@ -49,7 +46,7 @@ class AddFolder extends Component {
         throw new Error(res.message);
       })
       .then(res => this.context.addFolder(res))
-      .catch(err => (console.log(err)));
+      .catch(err => (err.message));
   }
 
   render() {
@@ -61,7 +58,7 @@ class AddFolder extends Component {
             className="folder-name"
             name="name"
             type="text"
-            ref={this.nameInput}
+            
             defaultValue="Enter Folder Name here"
             onChange={e => this.updateName(e.target.value)}
           ></input>

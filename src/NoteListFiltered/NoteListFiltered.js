@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
 import FolderList from "../FolderList/FolderList";
-
+import {Link} from"react-router-dom"
 import Note from "../Note/Note";
 
 class NoteListFiltered extends Component {
+  
   static contextType = NotefulContext;
   componentDidMount() {
     fetch("http://localhost:9090/notes")
@@ -14,14 +15,17 @@ class NoteListFiltered extends Component {
 
   render() {
     let notes = this.context.notes;
-
-    notes = this.context.notes.filter(
+     notes = this.context.notes.filter(
       item => item.folderId === this.props.match.params.id
     );
+    console.log(notes)
 
     return (
       <div className="notes">
-        <FolderList id={this.context.id}/>
+        <FolderList/>
+        <Link to="/addnote">
+          <button>Add a New Note</button>
+        </Link>
         {notes.map((note, id) => (
           <Note
             key={id}
@@ -30,6 +34,7 @@ class NoteListFiltered extends Component {
             modified={note.modified}
           />
         ))}
+        
       </div>
     );
   }

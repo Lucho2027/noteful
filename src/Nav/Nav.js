@@ -12,6 +12,7 @@ class Nav extends Component {
         <Link to="/addfolder">
           <button>Add a New Folder</button>
         </Link>
+        
       </div>
     );
   }
