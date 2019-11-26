@@ -19,7 +19,8 @@ class App extends Component {
 
   addNote = note => {
     this.setState({
-      notes: [...this.state.notes, note]
+      notes: [...this.state.notes, note],
+      
     });
   };
 
@@ -66,7 +67,8 @@ class App extends Component {
       addFolder: this.addFolder,
       deleteFolder: this.deleteFolder,
       setFolders: this.setFolders,
-      setNotes: this.setNotes
+      setNotes: this.setNotes,
+      
     };
     return (
       <div className="App">
@@ -90,13 +92,13 @@ class App extends Component {
             <Route exact path="/" component={NoteList} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route path="/folder/:id" component={NoteListFiltered} />
+            <Route exact path="/folder/:id" component={NoteListFiltered} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
             <Route  path="/note/:id" component={NotePage} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route  exact path="/addnote" component={AddNote}/>
+            <Route  exact path="/addnoteto/folder/:id" component={AddNote}/>
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
             <Route exact path="/addfolder" component={AddFolder} />

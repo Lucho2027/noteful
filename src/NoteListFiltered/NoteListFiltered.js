@@ -18,12 +18,12 @@ class NoteListFiltered extends Component {
      notes = this.context.notes.filter(
       item => item.folderId === this.props.match.params.id
     );
-    console.log(notes)
+
 
     return (
       <div className="notes">
         <FolderList/>
-        <Link to="/addnote">
+        <Link to={`/addnoteto/folder/${this.props.match.params.id}`}>
           <button>Add a New Note</button>
         </Link>
         {notes.map((note, id) => (
@@ -32,6 +32,8 @@ class NoteListFiltered extends Component {
             name={note.name}
             id={note.id}
             modified={note.modified}
+            folderId={note.folderId}
+            
           />
         ))}
         

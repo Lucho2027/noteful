@@ -19,7 +19,7 @@
   color: whitesmoke;
   font-size: 24px;
 }
-.folder-button::selected {
+.folder-button:active{
   border: 0;
   background: blue;
   color: whitesmoke;

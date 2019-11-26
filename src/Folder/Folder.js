@@ -16,10 +16,11 @@ class Folder extends Component {
   }
 
   render() {
+    
     return (
       <div className="folder">
-        <Link to={"/folder/" + this.props.id} className="folder-button">
-          {this.props.name}
+        <Link to={"/folder/" + this.props.id} className="folder-button" >
+        {this.props.name}
         </Link>
 
         <button onClick={e => this.onClick(this.props.id)}>Delete</button>

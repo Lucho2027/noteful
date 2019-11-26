@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
 import ValidationError  from '../AddFolder/ValidationError';
-import FolderList from "../FolderList/FolderList"
+import FolderList from "../FolderList/FolderList";
+import Dropdown from"../Dropdown/Dropdown";
+
 class AddNote extends Component {
   static contextType = NotefulContext;
 
-  constructor() {
-    super();
+  constructor(props) {
+    
+    super(props);
+    
     this.state = {
       name: {
         value: "",
@@ -15,16 +19,27 @@ class AddNote extends Component {
       content:{
         value:"",
         touched:false
-      }
+      },
+      /*folderId:this.props.match.params.id*/
+      
     };
-  }
-  updateNameNote(name) {
-    this.setState({ name: { value: name, touched: true } });
     
   }
-  updateContentNote(content) {
+  updateNameNote = (name) => {
+      this.setState({ name: { value: name, touched: true } });
+      console.log('pew pew')
+      
+  }
+  updateContentNote = (content)=> {
     this.setState({ content: { value: content, touched: true } });
     
+  }
+  /*updateFolderIdNote(folderId) {
+    this.setState({ folderId: folderId });
+    
+  }*/
+  updateFolderId = (folder) =>{
+    this.setState({ folderId: {value: folder, touched:true}})
   }
 
   validateNameNote(fieldValue) {
@@ -36,15 +51,7 @@ class AddNote extends Component {
       return "Name must be at least 3 characters long";
     }
   }
-  validateContentNote(fieldValue) {
-    const content = this.state.content.value.trim();
-
-    if (content.length === 0) {
-      return "Content is required";
-    } else if (content.length < 25) {
-      return "Content must be at least 25 characters long";
-    }
-  }
+  
 
   onSubmit(e) {
     
@@ -57,7 +64,8 @@ class AddNote extends Component {
       },
       body: JSON.stringify({
         name: e.target.name.value,
-        folder_id: this.context.folderId
+        
+      
       })
       
     })
@@ -65,38 +73,68 @@ class AddNote extends Component {
     .then(res => {
       if(res.ok){
         return res.json();
+        
+        
       }
       throw new Error(res.message);
+      
     })
-    .then(res => this.context.AddNote(res))
+    .then(res => this.context.addNote(res))
+    .then(res=>{
+      this.setState({
+        name:{ value:''},
+        modified:'',
+        folderId:{ value:''},
+        content:{value:''}
+      });
+     this.state.addNote(res)
+  
+    })
+   
+    
     .catch(err => (err.message))
-     console.log(this.state)
+    console.log("PROPS:",this.props)
+    console.log("STATE:",this.state)
+    console.log("CONTEXT:",this.context)
   }
   
 
   
   render() {
+   /*console.log("PROPS:",this.props)
+    console.log("STATE:",this.state)
+    console.log("CONTEXT:",this.context)*/
+    
+    
     return (
       <div className="add-note">
-        <FolderList/>
+        
         <form onSubmit={e => this.onSubmit(e)}>
-          <label>Note Name: </label>
+          <label>Note Name: </label><br></br>
           <input name="note-name"
+          
            type="text"
-           defaultValue="Enter Note Name here"
-            onChange={e => this.updateNameNote(e.target.value)}
+           onChange={e => this.updateNameNote(e.target.value)}
            ></input><br></br>
-          <textarea name="note-content"
-          rows="20"
+           <Dropdown
+           updateFolderId={this.updateFolderId}/>
+           <label>Note Content: </label><br></br>
+          <input name="note-content"
+          rows="10"
           cols="60"
           type="text"
           onChange={e => this.updateContentNote(e.target.value)}
-          ></textarea>
-          <button disabled={this.validateNameNote()&& this.validateContentNote()}>Add Note</button>
-          {this.state.name.touched && this.state.content.touched &&(
-            <ValidationError message={this.validateNameNote()} alt={this.validateContentNote()} />
-          )}
+          ></input>
+          
+
+        
+          <button type="submit"disabled={this.validateNameNote()}>Add Note</button>
+          {this.state.name.touched}
+            <ValidationError message={this.validateNameNote()}/>
+        
+          
         </form>
+        <FolderList/>
       </div>
     );
   }

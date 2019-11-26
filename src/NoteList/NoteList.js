@@ -13,6 +13,8 @@ class NoteList extends Component {
 
   render() {
     let notes = this.context.notes;
+    
+
 
     return (
     
@@ -23,8 +25,7 @@ class NoteList extends Component {
             name={note.name}
             id={note.id}
             modified={note.modified}
-            
-          />
+>{note.content}</Note>
         ))}
       </div>
     );

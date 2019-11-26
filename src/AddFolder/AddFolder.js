@@ -12,7 +12,8 @@ class AddFolder extends Component {
       name: {
         value: "",
         touched: false
-      }
+      },
+      
     };
   }
   updateName(name) {
@@ -50,6 +51,9 @@ class AddFolder extends Component {
   }
 
   render() {
+    console.log("PROPS:",this.props)
+    console.log("STATE:",this.state)
+    console.log("CONTEXT:",this.context)
     return (
       <div className="add-folders">
         <form onSubmit={e => this.onSubmit(e)}>
@@ -58,7 +62,6 @@ class AddFolder extends Component {
             className="folder-name"
             name="name"
             type="text"
-            
             defaultValue="Enter Folder Name here"
             onChange={e => this.updateName(e.target.value)}
           ></input>

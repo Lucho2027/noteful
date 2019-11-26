@@ -7,17 +7,19 @@ class NotePage extends Component {
   static contextType = NotefulContext;
   render() {
     let note = this.context.notes;
+    
 
     note = this.context.notes.filter(
       item => item.id === this.props.match.params.id
     );
-
+    
+    
     return (
+      
       <div className="note-page">
         <FolderList />
-        
-        {note.map((name, id) => (
-          <Note key={id} {...name} content={note.content} />
+         {note.map((name, id) => (
+          <Note key={id} {...name}  />
         ))}
       </div>
     );

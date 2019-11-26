@@ -4,6 +4,7 @@ import "./Nav.css";
 
 class Nav extends Component {
   render() {
+    
     return (
       <div className="nav">
         <Link to="/">
