@@ -1,4 +1,8 @@
 .folders {
   display: flex;
   flex-direction: column;
+  margin-top: 20vh;
+}
+a {
+  text-decoration: none;
 }

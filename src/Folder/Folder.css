@@ -7,19 +7,23 @@
 }
 
 .folder-button {
+  padding: 15px;
   border: 0;
   background: none;
   width: 100%;
   font-size: 24px;
+  text-decoration: none;
+  color: #bdbdbd;
 }
 
 .folder-button:hover {
-  border: 0;
-  background: black;
-  color: whitesmoke;
-  font-size: 24px;
+  background-color: #bd0909;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
-.folder-button:active{
+
+.folder-button:active {
   border: 0;
   background: blue;
   color: whitesmoke;

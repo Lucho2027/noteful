@@ -1,0 +1,20 @@
+.add-folder-form > button {
+  --note-button-height: 32px;
+  background-color: #041a3a;
+  border: 0;
+  color: #bdbcbc;
+  float: right;
+  font-size: 12px;
+  height: var(--note-button-height);
+  position: relative;
+  top: calc((var(--note-button-height) + 30px));
+  transform-origin: right bottom;
+  transform: rotate(0deg);
+  width: calc(var(--note-height));
+}
+form > button:hover {
+  background-color: #bd0909;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}

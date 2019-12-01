@@ -6,7 +6,7 @@ import NoteList from "./NoteList/NoteList";
 import AddFolder from "./AddFolder/AddFolder";
 import NoteListFiltered from "./NoteListFiltered/NoteListFiltered";
 import Nav from "./Nav/Nav";
-import NotefulErrorBoundry from"./NotefulErrorBoundry";
+import NotefulErrorBoundry from "./NotefulErrorBoundry";
 import "./App.css";
 import NotefulContext from "./NotefulContext";
 import AddNote from "./AddNote/AddNote";
@@ -19,8 +19,7 @@ class App extends Component {
 
   addNote = note => {
     this.setState({
-      notes: [...this.state.notes, note],
-      
+      notes: [...this.state.notes, note]
     });
   };
 
@@ -67,44 +66,41 @@ class App extends Component {
       addFolder: this.addFolder,
       deleteFolder: this.deleteFolder,
       setFolders: this.setFolders,
-      setNotes: this.setNotes,
-      
+      setNotes: this.setNotes
     };
     return (
       <div className="App">
-        <header>
+        <header className="App__header">
           <Link to="/">
             <h1>Noteful</h1>
           </Link>
         </header>
-        <Nav />
-        <NotefulContext.Provider value={contextValue}>
-          
-          <aside>
-            <NotefulErrorBoundry>
-            <Route exact path="/" component={FolderList} />
-            </NotefulErrorBoundry>
-          </aside>
-         
 
-          <main>
-          <NotefulErrorBoundry>
-            <Route exact path="/" component={NoteList} />
+        <NotefulContext.Provider value={contextValue}>
+          <aside className="App__nav">
+            <NotefulErrorBoundry>
+              <Route component={FolderList} />
+            </NotefulErrorBoundry>
+            <Nav />
+          </aside>
+
+          <main className="App__main">
+            <NotefulErrorBoundry>
+              <Route exact path="/" component={NoteList} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route exact path="/folder/:id" component={NoteListFiltered} />
+              <Route exact path="/folder/:id" component={NoteListFiltered} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route  path="/note/:id" component={NotePage} />
+              <Route path="/note/:id" component={NotePage} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route  exact path="/addnoteto/folder/:id" component={AddNote}/>
+              <Route exact path="/addnoteto/folder/:id" component={AddNote} />
             </NotefulErrorBoundry>
             <NotefulErrorBoundry>
-            <Route exact path="/addfolder" component={AddFolder} />
+              <Route exact path="/addfolder" component={AddFolder} />
             </NotefulErrorBoundry>
           </main>
-          
         </NotefulContext.Provider>
       </div>
     );
