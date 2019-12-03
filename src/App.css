@@ -68,10 +68,10 @@ span {
   font-size: 12px;
   height: var(--note-button-height);
   position: relative;
-  top: calc((var(--note-button-height) + -5px) * -1);
-  left: calc((var(--note-button-height) + -51px));
+  top: calc((var(--note-button-height) + 51px) * -1);
+  left: calc((var(--note-button-height) + -25px));
   transform-origin: right bottom;
-  transform: rotate(0deg);
+  transform: rotate(-90deg);
   width: calc(var(--note-height));
 }
 .Note__delete:hover {
@@ -150,7 +150,7 @@ select.dropdown {
   top: calc((var(--note-button-height) + 30px));
   transform-origin: right bottom;
   transform: rotate(0deg);
-  width: 85vh;
+  width: 25vh;
 }
 .App__nav > .nav > a > button:hover {
   background-color: #bd0909;
@@ -179,20 +179,37 @@ select.dropdown {
 }
 
 .App__main > .notes > a > button {
-  display: flex;
-  justify-content: center;
+  --note-button-height: 32px;
   background-color: #bdbcbc;
+  border-radius: 95px;
   border: 0.75px solid #041a3a;
   color: #041a3a;
-  border-radius: 95px;
+  float: right;
   font-size: 12px;
-  height: 30px;
-  top: calc((var(--note-button-height) + 50px));
-  transform-origin: right bottom;
-  transform: rotate(0deg);
-  width: calc(var(--note-height));
+  height: var(--note-button-height);
+  position: static;
+
+  width: 25vh;
 }
 .App__main > .notes > a > button:hover {
+  background-color: #bd0909;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.App__main > .NoteList > a > .add-note-button {
+  --note-button-height: 32px;
+  background-color: #bdbcbc;
+  border-radius: 95px;
+  border: 0.75px solid #041a3a;
+  color: #041a3a;
+  float: right;
+  font-size: 12px;
+  height: var(--note-button-height);
+  width: 25vh;
+}
+.App__main > .NoteList > a > .add-note-button:hover {
   background-color: #bd0909;
   color: white;
   cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Note from "../Note/Note";
-
+import PropTypes from "prop-types";
 import NotefulContext from "../NotefulContext";
 
 class NotePage extends Component {
@@ -21,5 +21,11 @@ class NotePage extends Component {
     );
   }
 }
-
+NotePage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 export default NotePage;

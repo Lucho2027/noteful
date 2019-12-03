@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
 import ValidationError from "../AddFolder/ValidationError";
-
+import PropTypes from "prop-types";
 import Dropdown from "../Dropdown/Dropdown";
 
 class AddNote extends Component {
@@ -23,7 +23,6 @@ class AddNote extends Component {
   }
   updateNameNote = name => {
     this.setState({ name: { value: name, touched: true } });
-    console.log("pew pew");
   };
   updateContentNote = content => {
     this.setState({ content: { value: content, touched: true } });
@@ -64,15 +63,12 @@ class AddNote extends Component {
         }
         throw new Error(res.message);
       })
-      .then(res => this.context.addNote(res))
       .then(res => {
-        this.setState({
-          name: { value: "" },
-          modified: "",
-          folderId: { value: "" },
-          content: { value: "" }
-        });
-        this.state.addNote(res);
+        this.context.addNote(res);
+      })
+
+      .then(res => {
+        this.props.history.push("/folder/" + this.props.match.params.id);
       })
 
       .catch(err => err.message);
@@ -86,34 +82,43 @@ class AddNote extends Component {
           <br></br>
           <input
             name="note-name"
+            placeholder="Jose"
             type="text"
+            required
             onChange={e => this.updateNameNote(e.target.value)}
           ></input>
           <br></br>
+          <label>Select Folder:</label>
           <Dropdown updateFolderId={this.updateFolderId} />
           <label>Note Content: </label>
-          <br></br>
+
           <input
             name="note-content"
             rows="10"
             cols="60"
             type="text"
+            required
             onChange={e => this.updateContentNote(e.target.value)}
           ></input>
 
-          <button
-            className="add-note"
-            type="submit"
-            disabled={this.validateNameNote()}
-          >
+          <button className="add-note" type="submit">
             Add Note
           </button>
-          {this.state.name.touched}
-          <ValidationError message={this.validateNameNote()} />
+          {this.state.name.touched && (
+            <ValidationError message={this.validateNameNote()} />
+          )}
         </form>
       </div>
     );
   }
 }
+
+AddNote.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 
 export default AddNote;

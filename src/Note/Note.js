@@ -11,6 +11,7 @@ class Note extends Component {
     })
       .then(res => res.json())
       .then(res => this.context.deleteNote(noteId));
+    /* .then(res => this.props.history.push("/folder/" + this.folderId)); */
   }
 
   render() {
@@ -23,6 +24,8 @@ class Note extends Component {
             {" "}
             Modified on {this.props.modified}
           </span>{" "}
+        </Link>
+        <Link to="/">
           <button
             className="Note__delete"
             onClick={e => this.onClick(this.props.id)}
@@ -34,11 +37,11 @@ class Note extends Component {
     );
   }
 }
-
-export default Note;
 Note.propTypes = {
   modified: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
   handleDelete: PropTypes.func
 };
+
+export default Note;

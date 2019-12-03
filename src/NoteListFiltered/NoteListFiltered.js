@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
-
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Note from "../Note/Note";
 
@@ -21,7 +21,7 @@ class NoteListFiltered extends Component {
     return (
       <div className="notes">
         <Link to={`/addnoteto/folder/${this.props.match.params.id}`}>
-          <button>Add a New Note</button>
+          <button className="add-note-button">Add a New Note</button>
         </Link>
         {notes.map((note, id) => (
           <Note
@@ -36,5 +36,12 @@ class NoteListFiltered extends Component {
     );
   }
 }
+NoteListFiltered.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 
 export default NoteListFiltered;

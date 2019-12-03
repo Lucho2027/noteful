@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NotefulContext from "../NotefulContext";
 import Note from "../Note/Note";
+import { Link } from "react-router-dom";
 import "./NoteList.css";
 
 class NoteList extends Component {
@@ -16,6 +17,9 @@ class NoteList extends Component {
 
     return (
       <div className="NoteList">
+        <Link to={`/addnoteto/folder/${this.props.match.params.id}`}>
+          <button className="add-note-button">Add a New Note</button>
+        </Link>
         {notes.map((note, id) => (
           <li key={note.id}>
             <Note
@@ -32,7 +36,3 @@ class NoteList extends Component {
 }
 
 export default NoteList;
-
-NoteList.defaultProps = {
-  notes: []
-};

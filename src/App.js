@@ -6,7 +6,7 @@ import NoteList from "./NoteList/NoteList";
 import AddFolder from "./AddFolder/AddFolder";
 import NoteListFiltered from "./NoteListFiltered/NoteListFiltered";
 import Nav from "./Nav/Nav";
-import NotefulErrorBoundry from "./NotefulErrorBoundry";
+import NotefulErrorBoundry from "./NotefulErrorBoundary";
 import "./App.css";
 import NotefulContext from "./NotefulContext";
 import AddNote from "./AddNote/AddNote";
@@ -87,17 +87,13 @@ class App extends Component {
           <main className="App__main">
             <NotefulErrorBoundry>
               <Route exact path="/" component={NoteList} />
-            </NotefulErrorBoundry>
-            <NotefulErrorBoundry>
+
               <Route exact path="/folder/:id" component={NoteListFiltered} />
-            </NotefulErrorBoundry>
-            <NotefulErrorBoundry>
+
               <Route path="/note/:id" component={NotePage} />
-            </NotefulErrorBoundry>
-            <NotefulErrorBoundry>
+
               <Route exact path="/addnoteto/folder/:id" component={AddNote} />
-            </NotefulErrorBoundry>
-            <NotefulErrorBoundry>
+
               <Route exact path="/addfolder" component={AddFolder} />
             </NotefulErrorBoundry>
           </main>
