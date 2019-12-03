@@ -38,10 +38,10 @@ class Note extends Component {
   }
 }
 Note.propTypes = {
-  modified: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  handleDelete: PropTypes.func
+  modified: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired
 };
 
 export default Note;

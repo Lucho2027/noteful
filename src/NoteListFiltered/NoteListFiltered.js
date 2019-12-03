@@ -37,9 +37,10 @@ class NoteListFiltered extends Component {
   }
 }
 NoteListFiltered.propTypes = {
+  name: PropTypes.string.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string
+      id: PropTypes.string.isRequired
     })
   })
 };

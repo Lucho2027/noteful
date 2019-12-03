@@ -114,9 +114,10 @@ class AddNote extends Component {
 }
 
 AddNote.propTypes = {
+  name: PropTypes.string.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string
+      id: PropTypes.string.isRequired
     })
   })
 };
