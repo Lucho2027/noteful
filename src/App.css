@@ -215,3 +215,6 @@ select.dropdown {
   cursor: pointer;
   font-weight: bold;
 }
+li {
+  list-style: none;
+}

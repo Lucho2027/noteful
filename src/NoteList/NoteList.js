@@ -20,16 +20,18 @@ class NoteList extends Component {
         <Link to={`/addnoteto/folder/${this.props.match.params.id}`}>
           <button className="add-note-button">Add a New Note</button>
         </Link>
-        {notes.map((note, id) => (
-          <li key={note.id}>
-            <Note
-              key={id}
-              name={note.name}
-              id={note.id}
-              modified={note.modified}
-            ></Note>
-          </li>
-        ))}
+        <ul className="note-list">
+          {notes.map((note, id) => (
+            <li key={note.id}>
+              <Note
+                key={id}
+                name={note.name}
+                id={note.id}
+                modified={note.modified}
+              ></Note>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
